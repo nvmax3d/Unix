@@ -1,0 +1,73 @@
+#!/bin/bash
+
+text1=" Co chcesz zrobic? \n 'tak' aby dodac kolejny wpis \n 'nie' aby zakonczyc\n 'print' aby wyswietlic liste \n"
+
+przerywnik="~~~~~~~~~~~~~~~~~~~~~~~~~"
+
+black="\033[0;30m";
+red="\033[0;31m";
+green="\033[0;32m";
+brown="\033[0;33m";
+blue="\033[0;34m";
+purple="\033[0;35m";
+grey="\033[1;30m";
+yellow="\033[1;33m";
+default="\033[0m";
+
+
+
+mkdir -p Contact_organiser/backup
+
+mkdir -p Contact_organiser/contacts
+
+cd Contact_organiser/contacts
+
+x=3;
+
+while [ $x -ge 1 ];
+do
+
+echo  $x
+echo 'Contact Organiser'
+echo '~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~'
+echo 'Program poprosi cię o wpisanie danych.'
+echo 'Po wpisaniu kliknij Enter.'
+echo '~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~'
+echo 'Podaj Imię i Nazwisko:'
+read name
+echo 'Podaj adres E-Mail:'
+read mail
+echo 'Podaj numer Gadu-Gadu:'
+read gg
+echo '~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~'
+echo 'Pobieranie danych zakończone'
+touch  $1
+echo -e  "\t $blue |imie i nazwisko: $name" >> $1
+echo -e  "\t $red |mail: $mail" >> $1
+echo -e  "\t $green |Gadu-Gadu $gg" >> $1
+echo -e "$default --------------------" >> $1
+echo -e 'Tworzenie kontaktow zakończone'
+echo -e "$default Plik $1 gotowy! $default"
+echo -e "$brown $przerywnik $default"
+echo -e "$purple ******************* $default"
+echo -e "$text1"
+echo -e "$purple ******************* $default"
+
+
+
+read  d
+
+case "$d" in
+
+"nie")  x=-2 && cat $1 ;; 
+
+"tak") 	x=3 ;;
+
+"print")  cat $1;;
+esac
+
+
+cp $1 ../backup/$1_backup
+ 
+
+done
