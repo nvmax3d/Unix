@@ -1,4 +1,3 @@
-
 #!/bin/bash
 
 text1=" Co chcesz zrobic? \n 'tak' aby dodac kolejny wpis \n 'nie' aby zakonczyc\n 'print' aby wyswietlic liste \n 'szukaj' aby wyszukać frazy \n 'zamien' aby zamienc wpis \n  "
